@@ -18,4 +18,6 @@ Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm
 Route::post('password.reset', 'Auth\ResetPasswordController@reset');
 
 
+// 用户个人中心
+Route::resource('users', 'UsersController', ['only' => ['show', 'update', 'edit']]);
 
