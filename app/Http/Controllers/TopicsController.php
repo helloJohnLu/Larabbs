@@ -19,7 +19,7 @@ class TopicsController extends Controller
 		$topics = Topic::paginate(30);
 		// 预加载，解决查询 N+1 问题
 		$topics->load('user', 'category');
-		
+
 		return view('topics.index', compact('topics'));
 	}
 
