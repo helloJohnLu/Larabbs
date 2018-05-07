@@ -29,6 +29,7 @@
                     {{--话题列表--}}
                     @include('topics._topic_list')
                     {{--分页--}}
+                    {!! $topics->render() !!}
                 </div>
             </div>
         </div>
