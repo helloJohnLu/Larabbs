@@ -11,7 +11,7 @@
 
     {{-- Styles --}}
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-
+    @yield('styles')
 
     <title>@yield('title', 'LaraBBS') - Laravel 实战项目</title>
 </head>
@@ -32,4 +32,5 @@
     </div>
 </body>
 <script src="{{ asset('js/app.js') }}"></script>
+@yield('scripts')
 </html>
