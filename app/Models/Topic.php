@@ -5,7 +5,7 @@ namespace App\Models;
 class Topic extends Model
 {
     // 可写入字段
-    protected $fillable = ['title', 'body', 'user_id', 'category_id', 'reply_count', 'view_count', 'last_reply_user_id', 'order', 'excerpt', 'slug'];
+    protected $fillable = ['title', 'body','category_id','excerpt', 'slug'];
 
     // 话题与分类，一对一关联
     public function category()
