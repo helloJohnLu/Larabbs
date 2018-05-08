@@ -70,6 +70,13 @@ class TopicsController extends Controller
 		return redirect()->route('topics.show', $topic->id)->with('message', '成功创建话题');
 	}
 
+    /**
+     * 渲染编辑页面
+     *
+     * @param Topic $topic
+     * @return
+     * @throws
+     */
 	public function edit(Topic $topic)
 	{
 	    // 编辑授权
@@ -80,6 +87,14 @@ class TopicsController extends Controller
 		return view('topics.create_and_edit', compact('topic', 'categories'));
 	}
 
+    /**
+     * 处理编辑表单提交
+     *
+     * @param TopicRequest $request
+     * @param Topic $topic
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws
+     */
 	public function update(TopicRequest $request, Topic $topic)
 	{
 		$this->authorize('update', $topic);
@@ -89,9 +104,18 @@ class TopicsController extends Controller
 		return redirect()->route('topics.show', $topic->id)->with('message', '更新成功');
 	}
 
+    /**
+     * 删除话题
+     *
+     * @param Topic $topic
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws
+     */
 	public function destroy(Topic $topic)
 	{
+	    // 删除授权
 		$this->authorize('destroy', $topic);
+
 		$topic->delete();
 
 		return redirect()->route('topics.index')->with('message', '删除成功');
