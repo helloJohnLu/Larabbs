@@ -36,8 +36,13 @@ class TopicsController extends Controller
      * @param Topic $topic
      * @return
      */
-    public function show(Topic $topic)
+    public function show(Request $request, Topic $topic)
     {
+        // URL 矫正
+        if ( ! empty($topic->slug) && $topic->slug != $request->slug) {
+            return redirect($topic->link(), 301);
+        }
+
         return view('topics.show', compact('topic'));
     }
 
@@ -67,7 +72,7 @@ class TopicsController extends Controller
 		$topic->user_id = \Auth::id();
 		$topic->save();
 
-		return redirect()->route('topics.show', $topic->id)->with('message', '成功创建话题');
+		return redirect()->to($topic->link())->with('message', '成功创建话题');
 	}
 
     /**
