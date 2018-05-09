@@ -19,6 +19,12 @@ class Topic extends Model
         return $this->belongsTo(User::class);
     }
 
+    // 话题 & 回复，一对多关联
+    public function replies()
+    {
+        return $this->hasMany(Reply::class);
+    }
+
     // 话题排序
     public function scopeWithOrder($query, $order)
     {
