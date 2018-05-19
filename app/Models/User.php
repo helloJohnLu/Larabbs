@@ -52,6 +52,12 @@ class User extends Authenticatable
         return $this->hasMany(Reply::class);
     }
 
+    // 策略授权
+    public function isAuthorOf($model)
+    {
+        return $this->id == $model->user_id;
+    }
+
     // 清除未读消息标示
     public function markAsRead()
     {
