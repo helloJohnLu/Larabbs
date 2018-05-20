@@ -4,9 +4,14 @@ namespace App\Models;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
+    // 权限 & 角色
+    use HasRoles;
+
+    // 消息通知
     use Notifiable {
         notify as protected laravelNotify;
     }
