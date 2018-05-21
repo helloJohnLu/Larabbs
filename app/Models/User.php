@@ -75,7 +75,7 @@ class User extends Authenticatable
     public function setPasswordAttribute($value)
     {
         // 如果值的长度等于 60，即认为是已经做过加密的情况
-        if (strlen($value) != 60) {
+        if (strlen($value) < 50) {
             // 不等于60，做密码加密处理
             $value = bcrypt($value);
         }
